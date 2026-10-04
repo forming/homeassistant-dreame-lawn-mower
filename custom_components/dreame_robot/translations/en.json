@@ -85,9 +85,6 @@
       "task_active": {
         "name": "Task active"
       },
-      "rain_delay": {
-        "name": "Rain delay active"
-      },
       "maintenance_due": {
         "name": "Maintenance due"
       },

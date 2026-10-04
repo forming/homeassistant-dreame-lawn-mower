@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Any
 
 from homeassistant.components.binary_sensor import (
     BinarySensorDeviceClass,
@@ -81,12 +80,6 @@ BINARY_SENSORS: tuple[DreameBinarySensorDescription, ...] = (
         value=lambda s, _c: s.activity in ("mowing", "returning"),
     ),
     DreameBinarySensorDescription(
-        key="rain_delay",
-        translation_key="rain_delay",
-        entity_category=EntityCategory.DIAGNOSTIC,
-        value=lambda s, _c: _flag(s.settings.get("WRP"), 3),
-    ),
-    DreameBinarySensorDescription(
         key="maintenance_due",
         translation_key="maintenance_due",
         device_class=BinarySensorDeviceClass.PROBLEM,
@@ -107,15 +100,6 @@ BINARY_SENSORS: tuple[DreameBinarySensorDescription, ...] = (
         value=lambda s, _c: bool(s.ota.get("update_available")),
     ),
 )
-
-
-def _flag(value: Any, index: int) -> bool:
-    """Read one boolean slot out of a settings record."""
-    if isinstance(value, dict):
-        value = value.get("value")
-    if isinstance(value, list) and len(value) > index:
-        return bool(value[index])
-    return False
 
 
 async def async_setup_entry(
