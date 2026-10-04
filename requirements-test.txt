@@ -1,0 +1,7 @@
+# Test-only dependencies. The integration itself declares its runtime
+# requirements in custom_components/dreame_robot/manifest.json.
+pillow>=10.0
+pytest>=8.3
+pytest-asyncio>=0.24
+pytest-homeassistant-custom-component>=0.13.201
+ruff>=0.11

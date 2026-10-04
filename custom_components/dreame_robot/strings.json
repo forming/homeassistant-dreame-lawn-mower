@@ -1,0 +1,376 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to Dreame",
+        "description": "Sign in with the account you use in the Dreamehome or MOVAhome app.",
+        "data": {
+          "account_type": "Brand",
+          "region": "Region",
+          "username": "Email address",
+          "password": "Password"
+        },
+        "data_description": {
+          "region": "Choose the region your account was created in.",
+          "password": "Sent to the vendor cloud. Stored in your Home Assistant config entry."
+        }
+      },
+      "device": {
+        "title": "Choose a mower",
+        "data": {
+          "device": "Mower"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Re-authenticate {name}",
+        "description": "The vendor cloud rejected the stored credentials.",
+        "data": {
+          "account_type": "Brand",
+          "region": "Region",
+          "username": "Email address",
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "cannot_auth": "The vendor cloud rejected these credentials.",
+      "cannot_connect": "Could not reach the vendor cloud. Check your network and region.",
+      "invalid_region": "That region is not supported.",
+      "no_devices": "No robotic mowers are bound to this account."
+    },
+    "abort": {
+      "already_configured": "This mower is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Dreame Robot options",
+        "data": {
+          "scan_interval": "Polling interval (seconds)",
+          "map_rotation": "Map rotation"
+        },
+        "data_description": {
+          "scan_interval": "Live updates arrive over MQTT; polling is only a fallback."
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "problem": {
+        "name": "Problem"
+      },
+      "connectivity": {
+        "name": "Connectivity"
+      },
+      "push_connected": {
+        "name": "Live updates"
+      },
+      "charging": {
+        "name": "Charging"
+      },
+      "docked": {
+        "name": "On the dock"
+      },
+      "mowing": {
+        "name": "Mowing"
+      },
+      "paused": {
+        "name": "Paused"
+      },
+      "returning": {
+        "name": "Returning"
+      },
+      "task_active": {
+        "name": "Task active"
+      },
+      "rain_delay": {
+        "name": "Rain delay active"
+      },
+      "maintenance_due": {
+        "name": "Maintenance due"
+      },
+      "maintenance_warning": {
+        "name": "Maintenance due soon"
+      },
+      "firmware_update_available": {
+        "name": "Firmware update available"
+      }
+    },
+    "button": {
+      "stop": {
+        "name": "Stop task"
+      },
+      "locate": {
+        "name": "Locate"
+      },
+      "clear_warning": {
+        "name": "Clear warning"
+      },
+      "reset_maintenance_blade": {
+        "name": "Reset blade counter"
+      },
+      "reset_maintenance_brush": {
+        "name": "Reset brush counter"
+      },
+      "reset_maintenance_robot": {
+        "name": "Reset maintenance counter"
+      }
+    },
+    "image": {
+      "map": {
+        "name": "Map"
+      }
+    },
+    "number": {
+      "voice_volume": {
+        "name": "Voice volume"
+      },
+      "rain_delay_hours": {
+        "name": "After-rain delay"
+      }
+    },
+    "select": {
+      "map": {
+        "name": "Map"
+      },
+      "map_rotation": {
+        "name": "Map rotation"
+      }
+    },
+    "sensor": {
+      "state_name": {
+        "name": "State"
+      },
+      "task_status": {
+        "name": "Task status"
+      },
+      "battery": {
+        "name": "Battery"
+      },
+      "mowing_mode": {
+        "name": "Mowing mode"
+      },
+      "session_time": {
+        "name": "Session mowing time"
+      },
+      "session_area": {
+        "name": "Session area"
+      },
+      "progress": {
+        "name": "Task progress"
+      },
+      "total_mowing_time": {
+        "name": "Total mowing time"
+      },
+      "total_mowed_area": {
+        "name": "Total mowed area"
+      },
+      "error": {
+        "name": "Error"
+      },
+      "status_notice": {
+        "name": "Status notice"
+      },
+      "position_x": {
+        "name": "Position X"
+      },
+      "position_y": {
+        "name": "Position Y"
+      },
+      "heading": {
+        "name": "Heading"
+      },
+      "map_count": {
+        "name": "Stored maps"
+      },
+      "zone_count": {
+        "name": "Zones on current map"
+      },
+      "serial_number": {
+        "name": "Serial number"
+      },
+      "firmware_version": {
+        "name": "Firmware version"
+      }
+    },
+    "switch": {
+      "rain_protection": {
+        "name": "Rain protection"
+      },
+      "charging_period": {
+        "name": "Charging window"
+      },
+      "voice_prompt_general": {
+        "name": "General voice prompts"
+      },
+      "voice_prompt_working": {
+        "name": "Working voice prompts"
+      },
+      "voice_prompt_special": {
+        "name": "Status voice prompts"
+      },
+      "voice_prompt_fault": {
+        "name": "Fault voice prompts"
+      }
+    }
+  },
+  "selector": {
+    "account_type": {
+      "options": {
+        "dreame": "Dreamehome",
+        "mova": "MOVAhome"
+      }
+    },
+    "region": {
+      "options": {
+        "eu": "Europe",
+        "us": "United States",
+        "cn": "China",
+        "ru": "Russia",
+        "sg": "Singapore"
+      }
+    }
+  },
+  "services": {
+    "mow_zones": {
+      "name": "Mow zones",
+      "description": "Mow one or more named lawn zones by their map identifiers.",
+      "fields": {
+        "entry_id": {
+          "name": "Config entry",
+          "description": "Limit the command to one mower. Omit to target every mower."
+        },
+        "zone_ids": {
+          "name": "Zone ids",
+          "description": "Zone identifiers, as shown on the map."
+        }
+      }
+    },
+    "mow_spots": {
+      "name": "Mow spot areas",
+      "description": "Mow one or more saved spot areas by their map identifiers.",
+      "fields": {
+        "entry_id": {
+          "name": "Config entry",
+          "description": "Limit the command to one mower. Omit to target every mower."
+        },
+        "spot_ids": {
+          "name": "Spot ids",
+          "description": "Spot identifiers, as shown on the map."
+        }
+      }
+    },
+    "mow_edges": {
+      "name": "Mow edges",
+      "description": "Mow saved map edges, given as edge and contour index pairs.",
+      "fields": {
+        "entry_id": {
+          "name": "Config entry",
+          "description": "Limit the command to one mower. Omit to target every mower."
+        },
+        "contour_ids": {
+          "name": "Contour ids",
+          "description": "Pairs of [edge, contour index]."
+        }
+      }
+    },
+    "go_to": {
+      "name": "Go to point",
+      "description": "Drive the mower to a coordinate on the current map without mowing.",
+      "fields": {
+        "entry_id": {
+          "name": "Config entry",
+          "description": "Limit the command to one mower. Omit to target every mower."
+        },
+        "x": {
+          "name": "X",
+          "description": "East-west coordinate in centimetres from the map origin."
+        },
+        "y": {
+          "name": "Y",
+          "description": "North-south coordinate in centimetres from the map origin."
+        }
+      }
+    },
+    "switch_map": {
+      "name": "Switch map",
+      "description": "Make the mower work on a different stored map.",
+      "fields": {
+        "entry_id": {
+          "name": "Config entry",
+          "description": "Limit the command to one mower. Omit to target every mower."
+        },
+        "map_index": {
+          "name": "Map index",
+          "description": "Zero-based index of the map to activate."
+        }
+      }
+    },
+    "remote_control": {
+      "name": "Remote control step",
+      "description": "Drive the mower manually for a single step. Call repeatedly to keep moving.",
+      "fields": {
+        "entry_id": {
+          "name": "Config entry",
+          "description": "Limit the command to one mower. Omit to target every mower."
+        },
+        "velocity": {
+          "name": "Velocity",
+          "description": "Forward or backward, from -1000 to 1000."
+        },
+        "rotation": {
+          "name": "Rotation",
+          "description": "Turn left or right, from -1000 to 1000."
+        }
+      }
+    },
+    "stop_mowing": {
+      "name": "Stop",
+      "description": "Stop the current task without sending the mower home.",
+      "fields": {
+        "entry_id": {
+          "name": "Config entry",
+          "description": "Limit the command to one mower. Omit to target every mower."
+        }
+      }
+    },
+    "reset_maintenance": {
+      "name": "Reset maintenance counter",
+      "description": "Zero one maintenance counter after replacing the part.",
+      "fields": {
+        "entry_id": {
+          "name": "Config entry",
+          "description": "Limit the command to one mower. Omit to target every mower."
+        },
+        "item": {
+          "name": "Item",
+          "description": "Which counter to reset."
+        }
+      }
+    },
+    "mow_point": {
+      "name": "Mow point",
+      "description": "Mow a small patch centred on a coordinate on the current map.",
+      "fields": {
+        "entry_id": {
+          "name": "Config entry",
+          "description": "Limit the command to one mower. Omit to target every mower."
+        },
+        "x": {
+          "name": "X",
+          "description": "East-west coordinate in centimetres from the map origin."
+        },
+        "y": {
+          "name": "Y",
+          "description": "North-south coordinate in centimetres from the map origin."
+        },
+        "passes": {
+          "name": "Passes",
+          "description": "How many times to mow the patch, from 1 to 5."
+        }
+      }
+    }
+  }
+}

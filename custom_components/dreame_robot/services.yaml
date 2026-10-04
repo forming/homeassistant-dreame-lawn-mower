@@ -1,0 +1,212 @@
+mow_zones:
+  name: Mow zones
+  description: Mow one or more named lawn zones by their map identifiers.
+  fields:
+    entry_id:
+      name: Config entry
+      description: Limit the command to one mower. Omit to target every mower.
+      required: false
+      example: 01JQZ3K5H8V6N7P2R4T9WXYZAB
+      selector:
+        config_entry:
+          integration: dreame_robot
+    zone_ids:
+      name: Zone ids
+      description: Zone identifiers, as shown on the map.
+      required: true
+      example: 1
+      selector:
+        object:
+mow_spots:
+  name: Mow spot areas
+  description: Mow one or more saved spot areas by their map identifiers.
+  fields:
+    entry_id:
+      name: Config entry
+      description: Limit the command to one mower. Omit to target every mower.
+      required: false
+      selector:
+        config_entry:
+          integration: dreame_robot
+    spot_ids:
+      name: Spot ids
+      description: Spot identifiers, as shown on the map.
+      required: true
+      example: 1
+      selector:
+        object:
+mow_edges:
+  name: Mow edges
+  description: Mow saved map edges, given as edge and contour index pairs.
+  fields:
+    entry_id:
+      name: Config entry
+      description: Limit the command to one mower. Omit to target every mower.
+      required: false
+      selector:
+        config_entry:
+          integration: dreame_robot
+    contour_ids:
+      name: Contour ids
+      description: Pairs of [edge, contour index].
+      required: true
+      example: '[[1, 0]]'
+      selector:
+        object:
+go_to:
+  name: Go to point
+  description: Drive the mower to a coordinate on the current map without mowing.
+  fields:
+    entry_id:
+      name: Config entry
+      description: Limit the command to one mower. Omit to target every mower.
+      required: false
+      selector:
+        config_entry:
+          integration: dreame_robot
+    x:
+      name: X
+      description: East-west coordinate in centimetres from the map origin.
+      required: true
+      example: 1200
+      selector:
+        number:
+          min: -100000
+          max: 100000
+          mode: box
+    y:
+      name: Y
+      description: North-south coordinate in centimetres from the map origin.
+      required: true
+      example: 3400
+      selector:
+        number:
+          min: -100000
+          max: 100000
+          mode: box
+switch_map:
+  name: Switch map
+  description: Make the mower work on a different stored map.
+  fields:
+    entry_id:
+      name: Config entry
+      description: Limit the command to one mower. Omit to target every mower.
+      required: false
+      selector:
+        config_entry:
+          integration: dreame_robot
+    map_index:
+      name: Map index
+      description: Zero-based index of the map to activate.
+      required: true
+      example: 1
+      selector:
+        number:
+          min: 0
+          max: 20
+          mode: box
+remote_control:
+  name: Remote control step
+  description: Drive the mower manually for a single step. Call repeatedly to keep moving.
+  fields:
+    entry_id:
+      name: Config entry
+      description: Limit the command to one mower. Omit to target every mower.
+      required: false
+      selector:
+        config_entry:
+          integration: dreame_robot
+    velocity:
+      name: Velocity
+      description: Forward or backward, from -1000 to 1000.
+      required: true
+      example: 400
+      selector:
+        number:
+          min: -1000
+          max: 1000
+          mode: box
+    rotation:
+      name: Rotation
+      description: Turn left or right, from -1000 to 1000.
+      required: true
+      example: -300
+      selector:
+        number:
+          min: -1000
+          max: 1000
+          mode: box
+stop_mowing:
+  name: Stop
+  description: Stop the current task without sending the mower home.
+  fields:
+    entry_id:
+      name: Config entry
+      description: Limit the command to one mower. Omit to target every mower.
+      required: false
+      selector:
+        config_entry:
+          integration: dreame_robot
+reset_maintenance:
+  name: Reset maintenance counter
+  description: Zero one maintenance counter after replacing the part.
+  fields:
+    entry_id:
+      name: Config entry
+      description: Limit the command to one mower. Omit to target every mower.
+      required: false
+      selector:
+        config_entry:
+          integration: dreame_robot
+    item:
+      name: Item
+      description: Which counter to reset.
+      required: true
+      example: blade
+      selector:
+        select:
+          options:
+            - blade
+            - brush
+            - robot
+mow_point:
+  name: Mow point
+  description: Mow a small patch centred on a coordinate on the current map.
+  fields:
+    entry_id:
+      name: Config entry
+      description: Limit the command to one mower. Omit to target every mower.
+      required: false
+      selector:
+        config_entry:
+          integration: dreame_robot
+    x:
+      name: X
+      description: East-west coordinate in centimetres from the map origin.
+      required: true
+      example: 1200
+      selector:
+        number:
+          min: -100000
+          max: 100000
+          mode: box
+    y:
+      name: Y
+      description: North-south coordinate in centimetres from the map origin.
+      required: true
+      example: 3400
+      selector:
+        number:
+          min: -100000
+          max: 100000
+          mode: box
+    passes:
+      name: Passes
+      description: How many times to mow the patch, from 1 to 5.
+      required: false
+      default: 1
+      selector:
+        number:
+          min: 1
+          max: 5
+          mode: box
