@@ -2,16 +2,16 @@
   "domain": "dreame_robot",
   "name": "Dreame Robot",
   "codeowners": [
-    "@dreame-robot"
+    "@forming"
   ],
   "config_flow": true,
   "dependencies": [
     "http"
   ],
-  "documentation": "https://github.com/dreame-robot/homeassistant-dreame-robot",
+  "documentation": "https://github.com/forming/homeassistant-dreame-lawn-mower",
   "integration_type": "device",
   "iot_class": "cloud_push",
-  "issue_tracker": "https://github.com/dreame-robot/homeassistant-dreame-robot/issues",
+  "issue_tracker": "https://github.com/forming/homeassistant-dreame-lawn-mower/issues",
   "loggers": [
     "custom_components.dreame_robot"
   ],

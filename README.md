@@ -41,8 +41,8 @@ per-zone mowing, live position, and the full control surface Home Assistant's
 
 ## Quick start
 
-1. Install **Dreame Robot** from HACS, or copy `custom_components/dreame_robot`
-   into your config directory. See
+1. Install **Dreame Robot** from HACS, or clone `https://github.com/forming/homeassistant-dreame-lawn-mower`
+   and copy `custom_components/dreame_robot` into your config directory. See
    [Installation](docs/installation.md).
 2. Restart Home Assistant.
 3. **Settings → Devices & Services → Add Integration → Dreame Robot.** Sign in

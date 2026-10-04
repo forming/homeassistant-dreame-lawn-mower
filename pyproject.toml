@@ -3,7 +3,7 @@ requires = ["setuptools>=69", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "homeassistant-dreame-robot"
+name = "homeassistant-dreame-lawn-mower"
 version = "0.1.0"
 description = "Home Assistant custom integration for Dreame and MOVA robotic lawn mowers, with an interactive map"
 readme = "README.md"

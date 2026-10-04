@@ -47,7 +47,7 @@ Home Assistant ──TLS  8883──▶ the broker named in the device record   
 2. Go to the ⋮ menu at the top of the HACS sidebar and choose **Custom
    repositories**.
 3. Add this repository:
-   - **Repository**: `https://github.com/dreame-robot/homeassistant-dreame-robot`
+   - **Repository**: `https://github.com/forming/homeassistant-dreame-lawn-mower`
    - **Category**: *Integration*
 4. Close and reopen HACS, search for **Dreame Robot**, and install it.
 5. Restart Home Assistant. **This step is required** — HACS does not always load
@@ -63,13 +63,13 @@ setup. Watch the log the first time; it takes a few seconds.
 1. Download this repository as a zip and unpack it, or clone it:
 
    ```bash
-   git clone https://github.com/dreame-robot/homeassistant-dreame-robot.git
+   git clone https://github.com/forming/homeassistant-dreame-lawn-mower.git
    ```
 
 2. Copy the integration directory into your Home Assistant config directory:
 
    ```bash
-   cp -r homeassistant-dreame-robot/custom_components/dreame_robot \
+   cp -r homeassistant-dreame-lawn-mower/custom_components/dreame_robot \
          /path/to/homeassistant/config/custom_components/
    ```
 
@@ -84,7 +84,7 @@ setup. Watch the log the first time; it takes a few seconds.
          ...
    ```
 
-   Do **not** copy it as `custom_components/homeassistant-dreame-robot`. The
+   Do **not** copy it as `custom_components/homeassistant-dreame-lawn-mower`. The
    directory name must be `dreame_robot`, because that is the integration
    domain.
 
